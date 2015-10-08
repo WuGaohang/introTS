@@ -25,10 +25,10 @@ while (pvalue > 0.05)
     d = d + 1
   }
 }
-#p according to AIC
+#p
 pacf(diff(lrate))
-p = m1$order
-#q according to ACF
+p = 2
+#q
 acf(diff(lrate))
 q = 1
 m3 = arima(lrate, order = c(p, d, q), seasonal = list(order = c(0, 1, 1), period = 12))

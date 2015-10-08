@@ -17,17 +17,22 @@ res = Box.test(d10, lag = 12, type = 'Ljung')
 pvalue = res$p.value
 if (pvalue > 0.05)
 {
+  d = 1
   cat("p-value = ",pvalue," > 0.05, cannot reject the null hypothesis")
 }else
 {
+  d = 0
   cat("p-value = ",pvalue," <= 0.05, reject the null hypothesis")
 }
 #(b)
-m1 = ar(diff(d2), method='mle')
-p = m1$order
+#p
+#m1 = ar(diff(d2), method='mle')
+pacf(d2)
+p = 0
+#q
 acf(d2)
-q = 0
-d = 0
+q = 1
+#d
 temp = d2
 while (pvalue > 0.05)
 {

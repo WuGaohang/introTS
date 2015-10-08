@@ -31,14 +31,16 @@ while (pvalue > 0.05)
   }
 }
 #p according to AIC
-p = m1$order
+pacf(rate)
+p = 6
 #q according to ACF
-pacf(diff(rate))
+acf(rate)
+q = 0
 
-m2 = arima(rate, order = c(p,d,0))
+m2 = arima(rate, order = c(p,d,q))
 predict(m2, 4)
 tsdiag(m2, gof = 36)
-m3 = arima(rate, order = c(p,d,0), seasonal = list(order=c(0,1,1),period=12))
+m3 = arima(rate, order = c(p,d,q), seasonal = list(order=c(0,1,1),period=12))
 predict(m3, 4)
 tsdiag(m3, gof = 36)
 #(c)

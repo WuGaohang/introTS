@@ -31,10 +31,10 @@ while (pvalue > 0.05)
 }
 #p
 pacf(m1$residuals)
-p = m2$order
+p = 2
 #q
 acf(m1$residuals)
-q = 0
+q = 1
 m4 = arima(diff(aaa), order = c(p, d, q), xreg = diff(baa))
 m4
 Box.test(m4$residuals, lag = 12, type = 'Ljung')
