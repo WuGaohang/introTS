@@ -38,3 +38,10 @@ q = 1
 m4 = arima(diff(aaa), order = c(p, d, q), xreg = diff(baa))
 m4
 Box.test(m4$residuals, lag = 12, type = 'Ljung')
+#using forecast
+require(forecast)
+auto.arima(diff(aaa))
+auto_mode = arima(diff(aaa), order = c(2,0,3))
+predict(auto_mode, 4)
+tsdiag(auto_mode, gof = 36)
+Box.test(auto_mode$residuals, lag = 12, type = 'Ljung')

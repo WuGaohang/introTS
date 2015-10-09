@@ -40,9 +40,18 @@ q = 0
 m2 = arima(rate, order = c(p,d,q))
 predict(m2, 4)
 tsdiag(m2, gof = 36)
+Box.test(m2$residuals, lag = 12, type = 'Ljung')
 m3 = arima(rate, order = c(p,d,q), seasonal = list(order=c(0,1,1),period=12))
 predict(m3, 4)
 tsdiag(m3, gof = 36)
+Box.test(m3$residuals, lag = 12, type = 'Ljung')
+#using forecast
+require(forecast)
+auto.arima(rate)
+auto_mode = arima(rate, order = c(2,1,2))
+predict(auto_mode, 4)
+tsdiag(auto_mode, gof = 36)
+Box.test(auto_mode$residuals, lag = 12, type = 'Ljung')
 #(c)
 #FIXME
 jan = rep(c(1,rep(0,11)),63)
